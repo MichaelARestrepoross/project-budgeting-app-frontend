@@ -15,7 +15,18 @@ function Transactions( transaction, setTransactions ) {
 
   return (
     <div>
-      Transactions
+      <h1>Transactions</h1>
+      {transaction.map(({ id, item_name, amount, date, from, category,transactionType }) => (
+        <div key={id}>
+          <h3>{date}</h3>
+          <h3>{item_name}</h3>
+          <h2>{amount}</h2>
+          <Link to= {`/${id}`}>
+            <button>Details</button>
+          </Link>
+          <hr />
+        </div>
+      ))}
     </div>
   )
 }
