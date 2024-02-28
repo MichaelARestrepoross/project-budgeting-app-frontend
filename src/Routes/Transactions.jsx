@@ -16,14 +16,31 @@ function Transactions({ transactions, setTransactions }) {
       });
   }
 
+  function formatDateToMonthDay(dateString) {
+    const date = new Date(dateString);
+    const month = date.toLocaleString('en-US', { month: 'short' });
+    const day = date.getDate();
+    return `${month} ${day}`;
+  }
+
+  function calculateBankTotal(transactions) {
+    let total = 0;
+    transactions.forEach(transaction => {
+      total += transaction.amount;
+    });
+    return total;
+  }
+  
+
   return (
     <div>
       <h1>Transactions</h1>
+      <h2>Account bank Total: ${calculateBankTotal(transactions)}</h2>
       {transactions.map(({ id, item_name, amount, date, from, category, transactionType }) => (
-        <div key={id}>
-          <h3>{date}</h3>
+        <div key={id} className="Transaction">
+          <h3>{formatDateToMonthDay(date)}</h3>
           <h3>{item_name}</h3>
-          <h2>{amount}</h2>
+          <h3>{amount}</h3>
           <Link to={`/${id}`}>
             <button>Details</button>
           </Link>

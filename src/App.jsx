@@ -22,7 +22,7 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <div className="App-Wrapper">
       <HeaderNav/>
       <h1>Transactions CRUD</h1>
 

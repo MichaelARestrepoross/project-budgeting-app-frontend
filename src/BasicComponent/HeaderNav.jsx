@@ -4,11 +4,11 @@ function HeaderNav() {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <h1 onClick={() => navigate('/')}>
+    <div className="Header"> 
+      <h1 className="HeaderName" onClick={() => navigate('/')}>
         HeaderNav
       </h1>
-      <button onClick={() => navigate('/new')}>
+      <button className="Header-create-button" onClick={() => navigate('/new')}>
         Create a new transaction
       </button>
     </div>
