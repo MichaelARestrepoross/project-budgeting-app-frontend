@@ -34,7 +34,6 @@ const App = () => {
           element= {
             <Transactions
               transactions={transactions}
-              setTransactions={setTransactions}
             />
           }
         />

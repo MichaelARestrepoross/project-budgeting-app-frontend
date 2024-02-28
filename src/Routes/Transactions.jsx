@@ -1,20 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-function Transactions({ transactions, setTransactions }) {
+
+function Transactions({ transactions }) {
   if (transactions.length === 0) return null;
-
-
-  function handleDelete(id) {
-    axios.delete(`http://localhost:8889/api/transactions/${id}`)
-      .then((res) => {
-        setTransactions(transactions.filter(transaction => transaction.id !== id));
-      })
-      .catch((error) => {
-        console.error("Error deleting transaction:", error);
-      });
-  }
 
   function formatDateToMonthDay(dateString) {
     const date = new Date(dateString);
@@ -31,7 +20,6 @@ function Transactions({ transactions, setTransactions }) {
     return total;
   }
   
-
   return (
     <div className="Transactions-Wrapper">
       <h1>Transactions</h1>
@@ -44,7 +32,6 @@ function Transactions({ transactions, setTransactions }) {
           <Link to={`/${id}`}>
             <button>Details</button>
           </Link>
-          <button onClick={() => handleDelete(id)}>Delete</button>
           <hr />
         </div>
       ))}
