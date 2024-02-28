@@ -33,7 +33,7 @@ function Transactions({ transactions, setTransactions }) {
   
 
   return (
-    <div>
+    <div className="Transactions-Wrapper">
       <h1>Transactions</h1>
       <h2>Account bank Total: ${calculateBankTotal(transactions)}</h2>
       {transactions.map(({ id, item_name, amount, date, from, category, transactionType }) => (
