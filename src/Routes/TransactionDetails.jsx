@@ -1,30 +1,41 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-function TransactionDetails() {
+function TransactionDetails({transactions,setTransactions ,transactionsToggle ,setTransactionsToggle}) {
   const {id} = useParams();
-  console.log("ID:", id);
+  const navigate = useNavigate();
   const [transaction, setTransaction] = useState(null);
 
-  useEffect(() => {
-    axios.get(`http://localhost:8889/api/transactions/${id}`)
-      .then((response) => {
-        console.log("Response data:", response.data);
-        setTransaction(response.data.transaction);
+  
+  function formatDateToMonthDayYear(dateString) {
+      const date = new Date(dateString);
+      const month = date.toLocaleString('en-US', { month: 'short' });
+      const day = date.getDate();
+      const year = date.getFullYear(); 
+      return `${month} ${day}, ${year}`; 
+    }
+  function handleDelete(id) {
+    axios.delete(`http://localhost:8889/api/transactions/${id}`)
+      .then((res) => {
+        setTransactions(transactions.filter(transaction => transaction.id !== id));
+        setTransactionsToggle(!transactionsToggle)
+        navigate('/')
       })
       .catch((error) => {
-        console.error('Error fetching transaction details:', error);
+        console.error("Error deleting transaction:", error);
       });
-  }, [id]);
-
-  function formatDateToMonthDayYear(dateString) {
-    const date = new Date(dateString);
-    const month = date.toLocaleString('en-US', { month: 'short' });
-    const day = date.getDate();
-    const year = date.getFullYear(); 
-    return `${month} ${day}, ${year}`; 
   }
+    useEffect(() => {
+      axios.get(`http://localhost:8889/api/transactions/${id}`)
+        .then((response) => {
+          console.log("Response data:", response.data);
+          setTransaction(response.data.transaction);
+        })
+        .catch((error) => {
+          console.error('Error fetching transaction details:', error);
+        });
+    }, [id]);
 
   if (!transaction) return null;
 
@@ -37,6 +48,7 @@ function TransactionDetails() {
       <p>Transaction Type: {transaction.transactionType}</p>
       <p>Date: {formatDateToMonthDayYear(transaction.date)}</p>
       <Link to="/">Go back to transactions list</Link>
+      <button onClick={() => handleDelete(id)}>Delete</button>
     </div>
   )
 }
