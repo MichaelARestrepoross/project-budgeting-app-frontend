@@ -1,8 +1,12 @@
-import React from 'react'
+import { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
+
 
 function TransactionDetails() {
   return (
-    <div>TransactionDetails</div>
+    <div>
+      <h1>TransactionDetails</h1>
+    </div>
   )
 }
 
