@@ -10,6 +10,7 @@ import TransactionsForm from "./Routes/TransactionsForm";
 
 const App = () => {
   const [transactions, setTransactions] = useState([]);
+  const [transactionsToggle, setTransactionsToggle] = useState(false);
 
   useEffect(() => {
     axios.get("http://localhost:8889/api/transactions")
@@ -19,7 +20,7 @@ const App = () => {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, []);
+  }, [transactionsToggle]);
 
   return (
     <div className="App-Wrapper">
@@ -33,14 +34,20 @@ const App = () => {
           element= {
             <Transactions
               transactions={transactions}
-              setTransactions={setTransactions}
             />
           }
         />
         {/* details route */}
         <Route 
           path="/:id" 
-          element = {<TransactionDetails />}
+          element = {
+            <TransactionDetails 
+              transactions = {transactions} 
+              setTransactions ={setTransactions} 
+              transactionsToggle = { transactionsToggle }
+              setTransactionsToggle = {setTransactionsToggle}
+            />
+          }
         />
         {/* edit route */}
         <Route 
