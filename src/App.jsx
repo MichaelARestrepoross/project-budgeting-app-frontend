@@ -12,7 +12,7 @@ const App = () => {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8889/api/transcations")
+    axios.get("http://localhost:8889/api/transactions")
       .then((response) => {
         setTransactions(response.data.transactions);
       })
