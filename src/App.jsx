@@ -30,7 +30,7 @@ const App = () => {
       </Link>
 
       <Routes>
-        {/* show all logs component */}
+        {/* show all Transactions component */}
         <Route 
           path="/"
           element= {
@@ -54,7 +54,7 @@ const App = () => {
             />
           }
         />
-        {/* create new logs */}
+        {/* create new Transaction */}
         <Route 
           path="/new"           
           element = {
