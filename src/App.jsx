@@ -25,9 +25,6 @@ const App = () => {
     <div>
       <HeaderNav/>
       <h1>Transactions CRUD</h1>
-      <Link to ="/new">
-       <button >Create a Transaction</button> 
-      </Link>
 
       <Routes>
         {/* show all Transactions component */}
