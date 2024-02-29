@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
+import axios from 'axios';
 
-function TransactionsForm({setTransactions}) {
-
+function TransactionsForm({transactions,setTransactions,transactionsToggle,setTransactionsToggle}) {
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -21,16 +21,27 @@ function TransactionsForm({setTransactions}) {
 
   function handleChange(e) {
     const { name, value } = e.target;
-    let newTransactionType = "";
+    let newValue = value;
     if (name === "amount") {
-      const floatValue = parseFloat(value);
-      newTransactionType = floatValue > 0 ? "Addition" : (floatValue < 0 ? "Deduction" : "");
+      // Parse the amount value to a float
+      newValue = parseFloat(value);
     }
     setTransaction(prevTransaction => ({
       ...prevTransaction,
-      [name]: value,
-      transactionType: name === "amount" ? newTransactionType : prevTransaction.transactionType
+      [name]: newValue,
+      transactionType: name === "amount" ? getTransactionType(newValue) : prevTransaction.transactionType
     }));
+  }
+  
+  // Function to determine transaction type based on amount
+  function getTransactionType(amount) {
+    if (amount > 0) {
+      return "Addition";
+    } else if (amount < 0) {
+      return "Deduction";
+    } else {
+      return "Neutral";
+    }
   }
 
 
@@ -45,7 +56,8 @@ function TransactionsForm({setTransactions}) {
       // Handle edit
       axios.put(`http://localhost:8889/api/transactions/${id}`, transaction, options)
         .then((res) => {
-          setTransactions(transactions.map((item) => item.id === id ? res.data.transaction : item));
+          // setTransactions(transactions.map((item) => item.id === id ? res.data.transaction : item));
+          setTransactionsToggle(!transactionsToggle);
           navigate("/");
         })
         .catch((error) => {
@@ -55,7 +67,7 @@ function TransactionsForm({setTransactions}) {
       // Handle create  
       axios.post("http://localhost:8889/api/transactions", transaction, options)
         .then((res) => {
-          setTransactions([...transactions, res.data.transaction]);
+          setTransactionsToggle(!transactionsToggle);
           navigate("/");
         })
         .catch((error) => {
@@ -63,7 +75,28 @@ function TransactionsForm({setTransactions}) {
         });
     }
   }
-  
+
+  useEffect(() => {
+    if (id) {
+      axios.get(`http://localhost:8889/api/transactions/${id}`)
+        .then((response) => {
+          setTransaction(response.data.transaction);
+        })
+        .catch((error) => {
+          console.error('Error fetching transaction details:', error);
+        });
+    }else{
+      setTransaction({
+        item_name: "",
+        amount: 0,
+        date: "",
+        from: "",
+        category: "",
+        transactionType: ""
+      })
+    }
+  }, [id]);
+
   return (
     <div>
       <h1>TransactionsForm</h1>

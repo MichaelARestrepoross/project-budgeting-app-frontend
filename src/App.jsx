@@ -11,6 +11,7 @@ import TransactionsForm from "./Routes/TransactionsForm";
 const App = () => {
   const [transactions, setTransactions] = useState([]);
   const [transactionsToggle, setTransactionsToggle] = useState(false);
+  
 
   useEffect(() => {
     axios.get("http://localhost:8889/api/transactions")
@@ -25,7 +26,6 @@ const App = () => {
   return (
     <div className="App-Wrapper">
       <HeaderNav/>
-      <h1>Transactions CRUD</h1>
 
       <Routes>
         {/* show all Transactions component */}
@@ -54,7 +54,10 @@ const App = () => {
           path="/edit/:id" 
           element = {
             <TransactionsForm 
+              transactions = {transactions}
               setTransactions = {setTransactions} 
+              transactionsToggle = { transactionsToggle }
+              setTransactionsToggle = {setTransactionsToggle}
             />
           }
         />
@@ -63,7 +66,10 @@ const App = () => {
           path="/new"           
           element = {
             <TransactionsForm 
-            setTransactions = {setTransactions} 
+              transactions = {transactions}
+              setTransactions = {setTransactions} 
+              transactionsToggle = { transactionsToggle }
+              setTransactionsToggle = {setTransactionsToggle}
             />
           } 
         />
