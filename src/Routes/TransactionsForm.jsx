@@ -21,6 +21,25 @@ function TransactionsForm({setTransactions}) {
   return (
     <div>
       <h1>TransactionsForm</h1>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="item_name">
+
+        </label>
+        <label htmlFor="amount">
+
+        </label>
+        <label htmlFor="date">
+
+        </label>
+        <label htmlFor="from">
+
+        </label>
+        <label htmlFor="category">
+
+        </label>
+        <br /><button type="submit">Submit</button><br />
+      </form>
+      <button onClick={handleCancel}>Cancel</button>
     </div>
   )
 }
