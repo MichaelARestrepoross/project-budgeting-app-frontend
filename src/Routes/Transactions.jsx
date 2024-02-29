@@ -3,15 +3,14 @@ import { Link } from "react-router-dom";
 
 
 function Transactions({ transactions }) {
-  if (transactions.length === 0) return null;
-
+  
   function formatDateToMonthDay(dateString) {
     const date = new Date(dateString);
     const month = date.toLocaleString('en-US', { month: 'short' });
     const day = date.getDate();
     return `${month} ${day}`;
   }
-
+  
   function calculateBankTotal(transactions) {
     let total = 0;
     transactions.forEach(transaction => {
@@ -19,6 +18,8 @@ function Transactions({ transactions }) {
     });
     return total;
   }
+  
+  if (transactions.length === 0) return null;
   
   return (
     <div className="Transactions-Wrapper">

@@ -47,7 +47,7 @@ function TransactionDetails({transactions,setTransactions ,transactionsToggle ,s
       <p>Amount: {transaction.amount}</p>
       <p>Transaction Type: {transaction.transactionType}</p>
       <p>Date: {formatDateToMonthDayYear(transaction.date)}</p>
-      <Link to="/">Go back to transactions list</Link>
+      <Link to="/"><button>Go back to transactions list</button></Link>
       <button onClick={() => handleDelete(id)}>Delete</button>
     </div>
   )
