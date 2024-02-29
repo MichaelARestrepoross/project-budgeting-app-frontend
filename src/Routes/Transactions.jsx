@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./Transactions.css"
 
 
 function Transactions({ transactions }) {
@@ -13,20 +14,25 @@ function Transactions({ transactions }) {
   
   function calculateBankTotal(transactions) {
     let total = 0;
-    transactions.forEach(transaction => {
-      total += transaction.amount;
-    });
+    if (transactions && transactions.length > 0) {
+      transactions.forEach(transaction => {
+        if (transaction.amount !== undefined) {
+          total += transaction.amount;
+        }
+      });
+    }
     return total;
   }
   
-  if (transactions.length === 0) return null;
   
+  if (transactions.length === 0) return null;
+
   return (
     <div className="Transactions-Wrapper">
       <h1>Transactions</h1>
       <h2>Account bank Total: ${calculateBankTotal(transactions)}</h2>
       {transactions.map(({ id, item_name, amount, date, from, category, transactionType }) => (
-        <div key={id} className="Transaction">
+        <div key={id} className= {`Transaction ${transactionType}`} >
           <h3>{formatDateToMonthDay(date)}</h3>
           <h3>{item_name}</h3>
           <h3>{amount}</h3>

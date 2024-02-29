@@ -1,0 +1,11 @@
+ .Transaction{
+    margin: 0 auto;
+    width: 80%;
+ }
+
+ .Addition {
+    background-color: aqua;
+ }
+ .Deduction{
+    background-color: lightcoral;
+ }

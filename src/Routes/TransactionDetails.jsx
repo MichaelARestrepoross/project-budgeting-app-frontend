@@ -40,7 +40,7 @@ function TransactionDetails({transactions,setTransactions ,transactionsToggle ,s
   if (!transaction) return null;
 
   return (
-    <div className="Transaction-Detail-Wrapper">
+    <div className={`Transaction-Detail-Wrapper ${transaction.transactionType}`}>
       <h1>Transaction Details</h1>
       <p>ID: {transaction.id}</p>
       <p>Item Name: {transaction.item_name}</p>
@@ -48,6 +48,9 @@ function TransactionDetails({transactions,setTransactions ,transactionsToggle ,s
       <p>Transaction Type: {transaction.transactionType}</p>
       <p>Date: {formatDateToMonthDayYear(transaction.date)}</p>
       <Link to="/"><button>Go back to transactions list</button></Link>
+      <button className="Header-create-button" onClick={() => navigate(`/edit/${id}`)}>
+        Edit transaction
+      </button>
       <button onClick={() => handleDelete(id)}>Delete</button>
     </div>
   )
