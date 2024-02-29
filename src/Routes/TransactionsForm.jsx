@@ -35,13 +35,35 @@ function TransactionsForm({setTransactions}) {
 
 
   function handleSubmit(e) {
-    // e.preventDefault();
+    e.preventDefault();
+
+    const options = {
+      headers: { "Content-Type": "application/json" },
+    };
+
     if (id) {
       // Handle edit
+      axios.put(`http://localhost:8889/api/transactions/${id}`, transaction, options)
+        .then((res) => {
+          setTransactions(transactions.map((item) => item.id === id ? res.data.transaction : item));
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error("Error updating transaction:", error);
+        });
     }else{
-      // Handle create
+      // Handle create  
+      axios.post("http://localhost:8889/api/transactions", transaction, options)
+        .then((res) => {
+          setTransactions([...transactions, res.data.transaction]);
+          navigate("/");
+        })
+        .catch((error) => {
+          console.error("Error adding transaction:", error);
+        });
     }
   }
+  
   return (
     <div>
       <h1>TransactionsForm</h1>
