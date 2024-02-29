@@ -18,25 +18,78 @@ function TransactionsForm({setTransactions}) {
   function handleCancel() {
     navigate("/");
   }
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setTransaction(prevTransaction => ({
+      ...prevTransaction,
+      [name]: value
+    }));
+  }
+
+
+  function handleSubmit(e) {
+    // e.preventDefault();
+    if (id) {
+      // Handle edit
+    }else{
+      // Handle create
+    }
+  }
   return (
     <div>
       <h1>TransactionsForm</h1>
       <form onSubmit={handleSubmit}>
+        Transaction Name: 
         <label htmlFor="item_name">
-
-        </label>
+          <input
+            onChange={handleChange}
+            type="text"
+            id="item_name"
+            name="item_name"
+            value={transaction.item_name}
+          />
+        </label><br />
+        Amount:$
         <label htmlFor="amount">
-
-        </label>
+          <input
+            onChange={handleChange}
+            type="number"
+            id="amount"
+            name="amount"
+            value={transaction.amount}
+          />
+        </label><br />
+        The Date: 
         <label htmlFor="date">
-
-        </label>
+          <input
+            onChange={handleChange}
+            type="date"
+            id="date"
+            name="date"
+            value={transaction.date}
+          />
+        </label><br />
+        From who: 
         <label htmlFor="from">
-
-        </label>
+          <input
+            onChange={handleChange}
+            type="text"
+            id="from"
+            name="from"
+            value={transaction.from}
+          />
+        </label><br />
+        Category: 
         <label htmlFor="category">
-
-        </label>
+          <input
+              onChange={handleChange}
+              type="text"
+              id="category"
+              name="category"
+              value={transaction.category}
+          />
+        </label><br />
         <br /><button type="submit">Submit</button><br />
       </form>
       <button onClick={handleCancel}>Cancel</button>
