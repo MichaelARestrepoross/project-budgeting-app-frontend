@@ -23,14 +23,25 @@ function Transactions({ transactions }) {
     }
     return total;
   }
-  
+    // Function to determine CSS class based on bank account total
+    function determineBankTotalClass(total) {
+      if (total > 100) {
+        return 'Green';
+      } else if (total >= 0) {
+        return 'Yellow';
+      } else {
+        return 'Red';
+      }
+    }
   
   if (transactions.length === 0) return null;
 
   return (
     <div className="Transactions-Wrapper">
       <h1>Transactions</h1>
-      <h2>Account bank Total: ${calculateBankTotal(transactions)}</h2>
+      <h2 className={`BankTotal`}>
+        Account bank Total: <span className={`${determineBankTotalClass(calculateBankTotal(transactions))}`}>${calculateBankTotal(transactions)}</span>
+      </h2>
       {transactions.map(({ id, item_name, amount, date, from, category, transactionType }) => (
         <div key={id} className= {`Transaction ${transactionType}`} >
           <h3>{formatDateToMonthDay(date)}</h3>

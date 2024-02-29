@@ -1,8 +1,20 @@
+ .BankTotal  {
+    text-shadow: 4px black;
+ }
+ .Green {
+    color: green;
+ }
+ .Yellow {
+    color: yellow;
+ }
+ .Red{
+    color: red;
+ }
+
  .Transaction{
     margin: 0 auto;
     width: 80%;
  }
-
  .Addition {
     background-color: aqua;
  }

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 
-function TransactionsForm({transactions,setTransactions,transactionsToggle,setTransactionsToggle}) {
+function TransactionsForm({transactionsToggle,setTransactionsToggle}) {
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -56,7 +56,6 @@ function TransactionsForm({transactions,setTransactions,transactionsToggle,setTr
       // Handle edit
       axios.put(`http://localhost:8889/api/transactions/${id}`, transaction, options)
         .then((res) => {
-          // setTransactions(transactions.map((item) => item.id === id ? res.data.transaction : item));
           setTransactionsToggle(!transactionsToggle);
           navigate("/");
         })

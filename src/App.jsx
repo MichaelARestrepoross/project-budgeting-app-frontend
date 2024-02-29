@@ -54,8 +54,6 @@ const App = () => {
           path="/edit/:id" 
           element = {
             <TransactionsForm 
-              transactions = {transactions}
-              setTransactions = {setTransactions} 
               transactionsToggle = { transactionsToggle }
               setTransactionsToggle = {setTransactionsToggle}
             />
@@ -66,8 +64,6 @@ const App = () => {
           path="/new"           
           element = {
             <TransactionsForm 
-              transactions = {transactions}
-              setTransactions = {setTransactions} 
               transactionsToggle = { transactionsToggle }
               setTransactionsToggle = {setTransactionsToggle}
             />
