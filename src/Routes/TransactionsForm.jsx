@@ -21,9 +21,15 @@ function TransactionsForm({setTransactions}) {
 
   function handleChange(e) {
     const { name, value } = e.target;
+    let newTransactionType = "";
+    if (name === "amount") {
+      const floatValue = parseFloat(value);
+      newTransactionType = floatValue > 0 ? "Addition" : (floatValue < 0 ? "Deduction" : "");
+    }
     setTransaction(prevTransaction => ({
       ...prevTransaction,
-      [name]: value
+      [name]: value,
+      transactionType: name === "amount" ? newTransactionType : prevTransaction.transactionType
     }));
   }
 
