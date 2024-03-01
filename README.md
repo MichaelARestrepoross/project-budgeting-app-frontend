@@ -1,4 +1,4 @@
-# Transactions Management Application
+# Bank Transactions Management Application
 
 ## Overview
 
