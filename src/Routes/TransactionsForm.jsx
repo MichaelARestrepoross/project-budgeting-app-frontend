@@ -111,6 +111,7 @@ function TransactionsForm({transactionsToggle,setTransactionsToggle}) {
             id="item_name"
             name="item_name"
             value={transaction.item_name}
+            required
           />
         </label><br />
         Amount:$
@@ -121,6 +122,7 @@ function TransactionsForm({transactionsToggle,setTransactionsToggle}) {
             id="amount"
             name="amount"
             value={transaction.amount}
+            required
           />
         </label><br />
         The Date: 
@@ -131,6 +133,7 @@ function TransactionsForm({transactionsToggle,setTransactionsToggle}) {
             id="date"
             name="date"
             value={transaction.date}
+            required
           />
         </label><br />
         From who: 
@@ -141,6 +144,7 @@ function TransactionsForm({transactionsToggle,setTransactionsToggle}) {
             id="from"
             name="from"
             value={transaction.from}
+            required
           />
         </label><br />
         Category: 
@@ -151,6 +155,7 @@ function TransactionsForm({transactionsToggle,setTransactionsToggle}) {
               id="category"
               name="category"
               value={transaction.category}
+              required
           />
         </label><br />
         <br /><button className = "submit"type="submit">Submit</button><br />
