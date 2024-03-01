@@ -7,7 +7,7 @@ This application serves as a tool for managing transactions, providing users wit
 ## Transactions Management Backend
 
 
-[Bank Transactions Management Backend Link](https://github.com/MichaelARestrepoross/lab-express-crud-backend)
+[Bank Transactions Management Backend Link](https://github.com/MichaelARestrepoross/project-budgeting-app-backend)
 
 
 ## Frontend Features
