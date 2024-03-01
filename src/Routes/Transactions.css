@@ -11,13 +11,48 @@
     color: red;
  }
 
- .Transaction{
-    margin: 0 auto;
-    width: 80%;
- }
+
  .Addition {
-    background-color: aqua;
+    background-color: lightgreen;
  }
  .Deduction{
     background-color: lightcoral;
  }
+ .Transactions-Wrapper {
+    display: flex;
+    flex-direction: column;
+}
+body h1 h2 h3 {
+    font-family: Georgia,Times New Roman,Times,serif;
+}
+.Transaction {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  margin:  5px auto;
+  width: 60%;
+}
+
+  .TransactionsDetails {
+    display: flex;
+    justify-content: space-between
+  }
+  
+  
+  .Transaction h3 {
+    margin-right: 10px; 
+  }
+
+     /* Media query  */
+@media screen and (max-width: 1200px) {
+    .Transaction {
+        width: 80%;
+    }
+  }
+@media screen and (max-width: 768px) {
+    .Transaction {
+        width: 90%;
+    }
+  }

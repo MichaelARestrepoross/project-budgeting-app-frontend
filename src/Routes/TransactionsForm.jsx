@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
+import "./TransactionsForm.css"
 import axios from 'axios';
 
 function TransactionsForm({transactionsToggle,setTransactionsToggle}) {
@@ -98,8 +99,10 @@ function TransactionsForm({transactionsToggle,setTransactionsToggle}) {
 
   return (
     <div>
-      <h1>TransactionsForm</h1>
-      <form onSubmit={handleSubmit}>
+      <div className="TransactionFormHeaderContainer">
+        <h1 className="TransactionFormHeader">{id ? "Edit Transaction" : "Create new Transaction"}</h1>
+      </div>
+      <form onSubmit={handleSubmit} className="TransactionsForm">
         Transaction Name: 
         <label htmlFor="item_name">
           <input
@@ -150,9 +153,9 @@ function TransactionsForm({transactionsToggle,setTransactionsToggle}) {
               value={transaction.category}
           />
         </label><br />
-        <br /><button type="submit">Submit</button><br />
+        <br /><button className = "submit"type="submit">Submit</button><br />
+      <button className='cancel' onClick={handleCancel}>Cancel</button>
       </form>
-      <button onClick={handleCancel}>Cancel</button>
     </div>
   )
 }

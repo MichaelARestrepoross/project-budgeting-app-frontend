@@ -26,7 +26,6 @@ const App = () => {
   return (
     <div className="App-Wrapper">
       <HeaderNav/>
-
       <Routes>
         {/* show all Transactions component */}
         <Route 

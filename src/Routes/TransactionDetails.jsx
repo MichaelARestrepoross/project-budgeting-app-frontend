@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import "./TransactionDetails.css"
 import axios from 'axios';
 
 function TransactionDetails({transactions,setTransactions ,transactionsToggle ,setTransactionsToggle}) {
@@ -51,7 +52,7 @@ function TransactionDetails({transactions,setTransactions ,transactionsToggle ,s
       <button className="Header-create-button" onClick={() => navigate(`/edit/${id}`)}>
         Edit transaction
       </button>
-      <button onClick={() => handleDelete(id)}>Delete</button>
+      <button className = {"delete"}onClick={() => handleDelete(id)}>Delete</button>
     </div>
   )
 }

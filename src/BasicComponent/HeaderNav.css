@@ -1,0 +1,35 @@
+/* HeaderNav.css */
+
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .Header h1 {
+    margin: 0;
+    font-size: 34px;
+    font-family: 'Arial', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .Header button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .Header button:hover {
+    background-color: #0056b3;
+  }
+  .Header-create-button {
+    margin: 10px;
+}

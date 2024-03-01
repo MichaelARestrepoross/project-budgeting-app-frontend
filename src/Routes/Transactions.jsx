@@ -44,13 +44,14 @@ function Transactions({ transactions }) {
       </h2>
       {transactions.map(({ id, item_name, amount, date, from, category, transactionType }) => (
         <div key={id} className= {`Transaction ${transactionType}`} >
+          <div className="TransactionsDetails">
           <h3>{formatDateToMonthDay(date)}</h3>
           <h3>{item_name}</h3>
           <h3>{amount}</h3>
+          </div>
           <Link to={`/${id}`}>
             <button>Details</button>
           </Link>
-          <hr />
         </div>
       ))}
     </div>
