@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import "./Transactions.css"
 
 
 function Transactions({ transactions }) {
+  const navigate = useNavigate();
+
+  function handleTransactionClick(id) {
+    navigate(`/${id}`);
+  }
   
   function formatDateToMonthDay(dateString) {
     const date = new Date(dateString);
@@ -43,14 +48,14 @@ function Transactions({ transactions }) {
         Account bank Total: <span className={`${determineBankTotalClass(calculateBankTotal(transactions))}`}>${calculateBankTotal(transactions)}</span>
       </h2>
       {transactions.map(({ id, item_name, amount, date, from, category, transactionType }) => (
-        <div key={id} className= {`Transaction ${transactionType}`} >
+        <div key={id} className= {`Transaction ${transactionType}`}  onClick={() => handleTransactionClick(id)}>
           <div className="TransactionsDetails">
           <h3>{formatDateToMonthDay(date)}</h3>
           <h3>{item_name}</h3>
           <h3>{amount}</h3>
           </div>
-          <Link to={`/${id}`}>
-            <button>Details</button>
+          <Link to={`/${id}`} className="DetailsButton Link">
+            <button className="DetailsButton">Details</button>
           </Link>
         </div>
       ))}
