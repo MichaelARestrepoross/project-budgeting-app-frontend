@@ -7,7 +7,7 @@ This application serves as a tool for managing transactions, providing users wit
 ## Transactions Management Backend
 
 
-[Transactions Management Backend Link](https://github.com/MichaelARestrepoross/lab-express-crud-backend)
+[Bank Transactions Management Backend Link](https://github.com/MichaelARestrepoross/lab-express-crud-backend)
 
 
 ## Frontend Features
@@ -72,3 +72,10 @@ As a user, I want transactions to be categorized as additions, deductions, or ne
 
 **Responsive Design**
 As a user, I expect the application to be responsive, allowing for optimal usability across different devices and screen sizes.
+
+
+## Stretch Goals
+
+- **Integrate Axios**: Replace the use of fetch with Axios for making calls to the backend.
+
+- **Color-Coded Transactions**: Implement color-coded transaction displays by assigning classNames to transaction divs. Transactions with a value of 0 should have a default color, positive transactions should be displayed in green, and negative (cash removal) transactions should be displayed in red.
