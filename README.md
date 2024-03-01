@@ -1,4 +1,4 @@
-# Bank Transactions Management Application
+# Bank Transactions Management Application Frontend
 
 ## Overview
 
