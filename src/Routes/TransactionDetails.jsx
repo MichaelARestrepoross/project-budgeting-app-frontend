@@ -45,7 +45,7 @@ function TransactionDetails({transactions,setTransactions ,transactionsToggle ,s
       <h1>Transaction Details</h1>
       <p>ID: {transaction.id}</p>
       <p>Item Name: {transaction.item_name}</p>
-      <p>Amount: {transaction.amount}</p>
+      <p>Amount: ${transaction.amount}</p>
       <p>Transaction Type: {transaction.transactionType}</p>
       <p>Date: {formatDateToMonthDayYear(transaction.date)}</p>
       <Link to="/"><button>Go back to transactions list</button></Link>
